@@ -1,0 +1,96 @@
+<!DOCTYPE html> 
+<html> 
+<head></head> 
+<body>
+<div data-role="page" id='home-page'>
+
+	<div class='top-header'></div>
+	<div data-role="header" class='header'>
+		<a href="#" data-role="none" class="toggle-menu"><img src='img/menu.png' /></a>
+		<h1>Lilypad</h1>
+		<a href="#" data-role="none" class="toggle-settings"><img src='img/settings.png' /></a>
+		<div class='menu-nav hide'>
+			<ul>
+				<li><a data-role="none" data-transition="slideup" href='home.html'>Home</a></li>
+				<li><a data-role="none" data-transition="slideup" href='traffic.html'>Traffic Management</a></li>
+				<li><a data-role="none" data-transition="slideup" href='keyword-stats.html'>Keyword Statistics</a></li>
+				<li><a data-role="none" data-transition="slideup" href='reputation.html'>Reputation Page</a></li>
+				<li><a data-role="none" data-transition="slideup" href='social.html'>Social Page</a></li>
+			</ul>
+		</div>		
+		<div class='settings-nav hide'>
+			<ul>
+				<li><a data-role="none" data-transition="slideup" href='#' class='logout'>Logout</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+	
+	<div data-role="content" class='content'>	
+		<p class='text'>Welcome <span class='bold'>test@pooltableexpess.com</span>. Let's see what's new on your Lilypad!</p>				
+		<div class="content-heading">
+			<h3>Your Company's Information</h3>
+			<div class='content-heading-body clear'>
+				<div class='avatar'><img src='img/default.png' /></div>
+				<div class='profile'>
+					<h4 id='business_name'>Business Name</h4>
+					<p>Business Type:	<span id='business_type'>Type</span></p>
+					<p>Address: 		<span id='business_address'>Address</span></p>
+					<p>Phone: 			<span id='profile_phone'>Phone</span></p>
+					<p>Email: 			<span id='profile_email'>Email</span></p>
+					<p>Website: 		<span id='profile_website'>Website</span></p>
+				</div>
+			</div>
+		</div>	
+
+		<div class="content-heading">
+			<h3>Your Website's Traffic Statistics</h3>
+			<div class='content-heading-body clear'>
+				<div class='home-stats-row clear'>
+					<div class='stats-label'>Total Site Visits</div>
+					<div class='stats-value' id='home_site_visits'>0</div>
+				</div>				
+				<div class='home-stats-row clear'>
+					<div class='stats-label'>Total Page Views</div>
+					<div class='stats-value' id='home_page_views'>0</div>
+				</div>
+				<a href="traffic.html" data-role="none" data-transition="slideup" class='btn-green'>View More</a>
+			</div>
+		</div>
+
+		<div class="content-heading">
+			<h3>Your Leads Contact Statistics</h3>
+			<div class='content-heading-body clear'>
+				<div class='home-stats-row clear'>
+					<div class='stats-label'>Coupon Prints</div>
+					<div class='stats-value' id='home_prints'>1538</div>
+				</div>				
+				<div class='home-stats-row clear'>
+					<div class='stats-label'>Phone Calls</div>
+					<div class='stats-value' id='home_calls'>5486</div>
+				</div>				
+				<div class='home-stats-row clear'>
+					<div class='stats-label'>Emails Received</div>
+					<div class='stats-value' id='home_emails'>5486</div>
+				</div>
+				<!--<a href="traffic.html" data-role="none" data-transition="slideup" class='btn-gray'>View More</a>-->
+			</div>
+		</div>
+
+		<div class="content-heading">
+			<h3>Your Social Networking Activity</h3>
+			<div class='content-heading-body clear'>
+				<div class='home-stats-row clear'>
+					<div class='stats-label'><img src='img/social_twitter.png' /></div>
+					<div class='social-value fb'><span id='home_fb'>0</span> Likes</div>
+				</div>		
+				<div class='home-stats-row clear'>
+					<div class='stats-label'><img src='img/social_fb.png' /></div>
+					<div class='social-value twitter'><span id='home_twitter'>0</span> Followers</div>
+				</div>			
+				<a href="social.html" data-role="none" data-transition="slideup" class='btn-gray'>View More</a>
+			</div>
+		</div>
+	</div><!-- /content -->
+</div>
+</body>
+</html>

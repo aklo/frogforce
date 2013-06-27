@@ -1,0 +1,188 @@
+<!DOCTYPE html> 
+<html> 
+<head>  
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+	<link rel="stylesheet" href="css/style.css" />
+	<title>FrogForce | We leapfrog you over the competition</title>
+</head> 
+<body>
+<div data-role="page" id='traffic-page'>
+
+	<div class='top-header'></div>
+	<div data-role="header" class='header'>
+		<a href="#" data-role="none" class="toggle-menu"><img src='img/menu.png' /></a>
+		<h1>Traffic Management</h1>
+		<a href="#" data-role="none" class="toggle-settings"><img src='img/settings.png' /></a>
+		<div class='menu-nav hide'>
+			<ul>
+				<li><a data-role="none" data-transition="slideup" href='home.html' >Home</a></li>
+				<li><a data-role="none" data-transition="slideup" href='traffic.html' >Traffic Management</a></li>
+				<li><a data-role="none" data-transition="slideup" href='keyword-stats.html' >Keyword Statistics</a></li>
+				<li><a data-role="none" data-transition="slideup" href='social.html' >Social Page</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class='content'>	
+		<div class="content-heading">
+			<h3>Traffic Analysis Settings</h3>
+			<div class='content-heading-body clear'>
+				<div class='left'>
+					<form id='trafficForm'>
+						<div>
+							<label for="traffic_per">Show Traffic Records per:</label>
+							<select name="traffic_per" id="traffic_per" data-role="slider">
+								<option value="day" selected="selected">Day</option>
+								<option value="month">Month</option>
+							</select> 
+						</div>						
+						<div class='record_type'>
+							<label for="record_type" class="select">Show Traffic Records type:</label>
+							<select name="record_type" id="record_type" data-role="slider">
+								<option value="visits" selected="selected">Visits</option>
+								<option value="page_views">Page Views</option>
+							</select> 
+						</div>	
+						<input type="submit" id='trafficSubmit' data-role="none" class='btn-ff' value="Go" />		
+					</form>
+				</div>			
+				<div class='right'>
+					<div class='big-number data_traffic_view'></div>
+					<div class='orange-text data_traffic_label'>Visits</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class=''>
+			<h3 class='title'>Your Website's Traffic Analysis</h3>
+			<div class='graph-container'>
+				<div id='traffic-analysis'></div>
+			</div>	
+		</div>	
+		
+		<div class=''>
+			<h3 class='title'>Where Does the Traffic Come From?</h3>
+			<div class='graph-container'>
+				<div id='traffic-source'></div>
+			</div>
+		</div>
+		<table class='traffic-table'>
+			<thead>
+				<tr>
+					<td>Source</td>
+					<td>Views</td>
+					<td>Percentage</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Main Website</td>
+					<td id='val_main'>0</td>
+					<td id='percent_main'>0%</td>
+				</tr>				
+				<tr>
+					<td>Other Sites (i.e: Affiliated Sites)</td>
+					<td id='val_others'>0</td>
+					<td id='percent_others'>0%</td>
+				</tr>				
+				<tr>
+					<td>Search Engines</td>
+					<td id='val_search'>0</td>
+					<td id='percent_search'>0%</td>
+				</tr>				
+				<tr>
+					<td>Total Result</td>
+					<td id='val_total'>0</td>
+					<td>100%</td>
+				</tr>
+			</tbody>
+		</table>
+				
+		<div class=''>
+			<div class='graph-container'>
+				<div id='search-source'></div>
+			</div>
+		</div>
+		
+		<table class='traffic-table'>
+			<thead>
+				<tr>
+					<td>Source</td>
+					<td>Views</td>
+					<td>Percentage</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Google</td>
+					<td id='val_google'>0</td>
+					<td id='percent_google'>0%</td>
+				</tr>				
+				<tr>
+					<td>Yahoo</td>
+					<td id='val_yahoo'>0</td>
+					<td id='percent_yahoo'>0%</td>
+				</tr>				
+				<tr>
+					<td>Bing (Msn)</td>
+					<td id='val_bing'>0</td>
+					<td id='percent_bing'>0%</td>
+				</tr>				
+				<tr>
+					<td>Ask.com</td>
+					<td id='val_ask'>0</td>
+					<td id='percent_ask'>0%</td>
+				</tr>				
+				<tr>
+					<td>Total Results</td>
+					<td id='val_search_total'>0</td>
+					<td>100%</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<div class=''>
+			<h3 class='title'>Leads Source Map</h3>
+			<div class='map-container'>
+				<div id='map_canvas'></div>
+			</div>	
+			<div class='marker-container'>
+				<div class='marker'>
+					<img src='img/marker_business.png' />
+					<span>Business</span>
+				</div>					
+				<div class='marker'>
+					<img src='img/marker_emails.png' />
+					<span>Emails</span>
+				</div>					
+				<div class='marker'>
+					<img src='img/marker_visits.png' />
+					<span>Visits</span>
+				</div>					
+				<div class='marker'>
+					<img src='img/marker_calls.png' />
+					<span>Calls</span>
+				</div>	
+			</div>	
+		</div>	
+		
+	</div><!-- /content -->
+</div><!-- /page -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.3.0.min.js"></script>
+<script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false&amp;language=en&amp;&amp;key=AIzaSyCSstGSXeTq4pm9gSe3bnPb90trjm22D60"></script>  
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript">
+	app.initialize();
+	
+	google.load('visualization', '1.0', {'packages':['corechart']});
+	google.setOnLoadCallback(drawTrafficAnalysis);
+	google.setOnLoadCallback(drawTrafficSource);
+	google.setOnLoadCallback(drawSearchSource);
+</script>
+</body>
+</html>

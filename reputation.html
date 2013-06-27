@@ -1,0 +1,90 @@
+<!DOCTYPE html> 
+<html> 
+<head></head> 
+<body>
+<div data-role="page" id='reputation-page'>
+
+	<div class='top-header'></div>
+	<div data-role="header" class='header'>
+		<a href="#" data-role="none" class="toggle-menu"><img src='img/menu.png' /></a>
+		<h1>Reputation</h1>
+		<a href="#" data-role="none" class="toggle-settings"><img src='img/settings.png' /></a>
+		<div class='menu-nav hide'>
+			<ul>
+				<li><a data-role="none" data-transition="slideup" href='home.html'>Home</a></li>
+				<li><a data-role="none" data-transition="slideup" href='traffic.html'>Traffic Management</a></li>
+				<li><a data-role="none" data-transition="slideup" href='keyword-stats.html'>Keyword Statistics</a></li>
+				<li><a data-role="none" data-transition="slideup" href='reputation.html'>Reputation Page</a></li>
+				<li><a data-role="none" data-transition="slideup" href='social.html'>Social Page</a></li>
+			</ul>
+		</div>
+		<div class='settings-nav hide'>
+			<ul>
+				<li><a data-role="none" data-transition="slideup" href='#' class='logout'>Logout</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class='content'>	
+		<p class='text'>Welcome to your <span class='bold'>Reputation Management</span>. Page. This shows a list of related reviews about your business.</p>
+		<a href='#' class='btn-gray' data-role="none">What is this about?</a>
+		
+		<div class='reputation-graph-container'>
+			<div class='graph-container'>
+				<div id='reputation-chart'></div>
+			</div>
+		</div>
+		
+		<div class="content-heading">
+			<h3>Reputation Dashboard</h3>
+			<div class='content-heading-body clear'>
+				<div class='reputation-details'>
+					<p>Hello, Welcome to your Reputation Management Page.</p>
+					<p>Your total reviews: (<span id='totalReview'>0</span>)</p>
+					<p>Average Rating: <span id='averageRating'>0.0</span></p>
+					<div id='reputation-main-star' class='stars'>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</div>
+				</div>
+			</div>
+		</div>		
+
+		<div class='reputation-data'>
+			<div class="content-heading">
+				<!--
+				<h3>Allan L.</h3>
+				<div class='content-heading-body clear'>
+				
+					<div class='review-details'>
+						<div class='review-row'>
+							<p>Review from:</p>
+							<p>Jabber</p>
+						</div>
+						<div class='review-row'>
+							<p>Date:</p>
+							<p>March 19, 2013</p>
+						</div>					
+						<div class='review-row'>
+							<p>Review Rating:</p>
+							<div class='stars'>
+								<span class='active'></span>
+								<span class='active'></span>
+								<span class='active'></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+					</div>
+					<div class='review-content'>"Excellent selections of pool tables."</div>	
+				</div>
+				-->
+			</div>
+		</div>
+	</div><!-- /content -->
+</div><!-- /page -->
+</body>
+</html>

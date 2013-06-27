@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'HelveticaNeueLTPro47LightCondensed';
+    src: url('helveticaneueltpro-ltcn_0.eot');
+    src: url('helveticaneueltpro-ltcn_0.eot') format('embedded-opentype'),
+         url('helveticaneueltpro-ltcn_0.woff') format('woff'),
+         url('helveticaneueltpro-ltcn_0.ttf') format('truetype'),
+         url('helveticaneueltpro-ltcn_0.svg#HelveticaNeueLTPro47LightCondensed') format('svg');
+}

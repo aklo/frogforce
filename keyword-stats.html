@@ -1,0 +1,86 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+</head> 
+<body>
+<div data-role="page" id='keyword-page'>
+
+	<div class='top-header'></div>
+	<div data-role="header" class='header'>
+		<a href="#" data-role="none" class="toggle-menu"><img src='img/menu.png' /></a>
+		<h1>Keyword Statistics</h1>
+		<a href="#" data-role="none" class="toggle-settings"><img src='img/settings.png' /></a>
+		<div class='menu-nav hide'>
+			<ul>
+				<li><a data-role="none" data-transition="slideup" href='home.html'>Home</a></li>
+				<li><a data-role="none" data-transition="slideup" href='traffic.html'>Traffic Management</a></li>
+				<li><a data-role="none" data-transition="slideup" href='keyword-stats.html'>Keyword Statistics</a></li>
+				<li><a data-role="none" data-transition="slideup" href='reputation.html'>Reputation Page</a></li>
+				<li><a data-role="none" data-transition="slideup" href='social.html'>Social Page</a></li>
+			</ul>
+		</div>
+		<div class='settings-nav hide'>
+			<ul>
+				<li><a data-role="none" data-transition="slideup" href='#' class='logout'>Logout</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class='content'>	
+		<p class='text'>This is your Keyword Statistics Page. You could check your keyword's performance from time to time.</p>
+		<div class=''>
+			<h3 class='title'>Your Website's Keyword Performance</h3>
+			<div id='keyword-chart'></div>
+			<div class='keyword-panel clear'>
+				<form id='keywordForm'>
+					<label for="select_keyword">Keyword:</label>
+					<select id='select_keyword' class='select_keyword' data-inline="true" data-native-menu="false"></select>
+					<input type='hidden' value='' id='keyword_id' />
+					<div class='btn-keyword-submit'>
+						<input type="submit" id="keywordSubmit" class="btn-ff" value="Go">
+					</div>	
+				</form>
+			</div>	
+		</div>	
+
+		<div class=''>
+			<h3 class='title'>Your Website's Keyword Rank</h3>
+			<div class='ranking-container'>
+				<div class='ranking-row clear'>
+					<div class='ranking-name'>
+						<ul>
+							<li>Keyword 1</li>
+							<li>Keyword 2</li>
+							<li>Keyword 3</li>
+							<li>Keyword 4</li>
+							<li>Keyword 5</li>
+						</ul>
+					</div>
+					<div class='ranking-value'>
+						<h3>Search Engine</h3>
+						<div class='ranking-body clear'>
+							<ul>
+								<li>Current</li>
+								<li>0</li>
+								<li>0</li>
+								<li>0</li>
+								<li>0</li>
+								<li>0</li>
+							</ul>						
+							<ul>
+								<li>Previous</li>
+								<li>0</li>
+								<li>0</li>
+								<li>0</li>
+								<li>0</li>
+								<li>0</li>
+							</ul>
+						</div>
+					</div>	
+				</div>
+			</div>	
+		</div>	
+	</div><!-- /content -->
+</div><!-- /page -->
+</body>
+</html>
