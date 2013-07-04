@@ -1,7 +1,7 @@
 //app.initialize();
 
-var domain = 'http://frogforce.com/mobile_frogforce/process/';
 var domain = 'http://localhost/mobile_frogforce/process/';
+var domain = 'http://frogforce.com/mobile_frogforce/process/';
 
 function init() 
 {
@@ -194,7 +194,7 @@ function getReputationData()
 						   + "    <div class='review-details'>"
 						   + "      <div class='review-row'>"
 						   + "        <p>Review from:</p>"
-						   + "        <p>" + data.data.ratings[x]['rep_source']['rep_source'] + "</p>"
+						   + "        <p>" + data.data.ratings[x]['rep_source'] + "</p>"
 						   + "      </div>"
 						   + "      <div class='review-row'>"
 						   + "        <p>Date:</p>"
@@ -600,14 +600,14 @@ function handleLogin() {
 					var path = window.localStorage["last_visit"];
 				}
 
-				var home = 'http://frogforce.com/mobile_frogforce/www/' + path;
-				var home = 'http://localhost/mobile_frogforce/www/' + path;
+				//var home = 'http://frogforce.com/mobile_frogforce/www/' + path;
+				//var home = 'http://localhost/mobile_frogforce/www/' + path;
 				
 				setTimeout(function() {
 					if (path == 'home.html') {
 						alert('Login Successful... Redirecting...');
-					}
-					$.mobile.changePage(home, {
+					}                           
+					$.mobile.changePage(path, {
 						transition	: "slide",
 					});
 				}, 2000);
