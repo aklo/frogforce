@@ -67,7 +67,7 @@
 	border: 0;
 	background-color: transparent !important;
 	background-repeat: no-repeat;
-	font-family: 'HelveticaNeueLTProLt';
+	font-family: 'HelveticaNeue', Century Gothic;
 	font-size: 17px;
 	color: #999999 !important;
 	outline: 0;
@@ -96,7 +96,8 @@
 	border-radius: 6px;
 	width: 100%;
 	color: #111111;
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	font-size: 24px;
 	text-shadow: 0px 1px 0px #fff;
 	filter: dropshadow(color=#fff, offx=0, offy=1);
@@ -261,7 +262,7 @@
 	-webkit-border-top-right-radius: 5px;
 	-moz-border-radius-topleft: 5px;
 	-moz-border-radius-topright: 5px;
-	border-top-left-radius: 5px;
+	border-top-left-radius: 5psx;
 	border-top-right-radius: 5px;
 	text-shadow: -2px -2px 1px rgba(0,0,0,.2);
     filter: dropshadow(color=rgba(0,0,0,.2), offx=-2, offy=-2);
@@ -270,7 +271,7 @@
 .content-heading label {
 	display: block !important;
 	width: 100% !important;
-	font-family: 'HelveticaNeueLTProLt';
+	font-family: 'HelveticaNeue', Century Gothic;
 	font-size: 15px;
 }
 
@@ -283,7 +284,7 @@
 /* TRAFFIC PAGE */
 
 #trafficForm .ui-slider-label {
-	font-family: 'HelveticaNeueLTProLt';
+	font-family: 'HelveticaNeue', Century Gothic;
 	font-size: 14px;
 	line-height: 32px;
 }
@@ -336,15 +337,16 @@
 	text-align: center;
 	line-height: 100px;
 	font-weight: bold;
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	font-size: 40px;
 	margin: 0 10px;
 }
 
 .orange-text {
 	color: #ed5005;
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
 	font-weight: bold;
-	font-family: 'HelveticaNeueLTProBd';
 	text-align: center;
 	margin: 10px;
 	font-size: 15px;
@@ -411,7 +413,7 @@ h3.title {
 .graph-container {
 	-webkit-box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, .2);
 	box-shadow: 0px 1px 5px 1px rgba(0, 0, 0, .2);
-	font-family: 'HelveticaNeueLTProLt';
+	font-family: 'HelveticaNeue', Century Gothic;
 }
 
 #search-source {
@@ -530,13 +532,14 @@ h3.title {
 	margin: 0 0 6px;
 	padding: 0 0 6px;
 	border-bottom: 1px solid #ddd;
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	color: #000;
 	font-size: 17px;
 }
 
 .profile p {
-	font-family: 'HelveticaNeueLTProLt';
+	font-family: 'HelveticaNeue', Century Gothic;
 	font-size: 15px;
 	margin: 0 0 6px;
 }
@@ -547,13 +550,14 @@ h3.title {
 
 
 .text {
-	font-family: 'HelveticaNeueLTProLt';
+	font-family: 'HelveticaNeue', Century Gothic;
 	font-size: 15px;
 	color: #333;
 }
 
 span.bold {
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	color: #000;
 }
 
@@ -563,7 +567,8 @@ span.bold {
 	margin: 6px 0 6px 24px;
 	line-height: 40px;
 	font-size: 24px;
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	color: #000;
 }
 .stats-label img {
@@ -574,7 +579,8 @@ span.bold {
 	float: right;
 	margin: 6px 24px 6px 0;
 	font-size: 24px;
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	color: #000;
 	background: url(../img/btn_data.png) repeat-x;
 	padding: 6px 12px;
@@ -593,7 +599,7 @@ span.bold {
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
-	font-family: 'HelveticaNeueLTProLt';
+	font-family: 'HelveticaNeue', Century Gothic;
 	font-size:17px;
 }
 .social-value.fb {
@@ -604,7 +610,8 @@ span.bold {
 }
 .social-value.fb span,
 .social-value.twitter span {
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	font-size: 24px;
 }
 
@@ -660,7 +667,8 @@ span.bold {
 .ranking-name {
 	float: left;
 	font-size: 15px;
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	color: #000;
 	margin-top: 84px;
 }
@@ -687,8 +695,8 @@ span.bold {
 	height: 45px;
 	text-align: center;
 	line-height: 45px;
-	font-family: 'HelveticaNeueLTProBd';
-	font-size: 17px;
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;	font-size: 17px;
 	color: #fff;
 	-webkit-border-top-left-radius: 5px;
 	-webkit-border-top-right-radius: 5px;
@@ -854,7 +862,8 @@ h3.ratingHeader {
 	height: 35px;
 	line-height: 35px;
 	margin: 12px;
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
@@ -949,7 +958,8 @@ h3.ratingHeader {
 }
 
 .char-counter {
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	font-size: 12px;
 	color: #a8a8a8;
 	text-align: right;
@@ -1053,7 +1063,8 @@ h3.ratingHeader {
 	line-height: 35px;
 	text-shadow: -2px -2px 1px rgba(0,0,0,.2);
     filter: dropshadow(color=rgba(0,0,0,.2), offx=-2, offy=-2);
-	font-family: 'HelveticaNeueLTProBd';
+    font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 	font-size: 15px;
 	color: #fff;
 }
@@ -1150,7 +1161,8 @@ h3.ratingHeader {
 .social-stat-value {
 	color: #016a9d;
 	font-size: 24px;
-	font-family: 'HelveticaNeueLTProBd';
+	font-family: 'HelveticaNeue-Bold', Century Gothic;
+	font-weight: bold;
 }
 .social-stat-label {
 	color: #333333;
