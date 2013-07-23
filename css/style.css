@@ -583,7 +583,8 @@ span.bold {
 	font-weight: bold;
 	color: #000;
 	background: url(../img/btn_data.png) repeat-x;
-	padding: 6px 12px;
+	line-height: 40px;
+	padding: 0 12px;
 	-webkit-border-radius: 6px;
 	-moz-border-radius: 6px;
 	border-radius: 6px;
