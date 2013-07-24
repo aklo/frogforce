@@ -412,18 +412,17 @@ function drawKeywordChart(keyword_id)
 				options += "<option " + selected + " value='" + result.keyword_list[x]['keyword_id'] + "'>" + result.keyword_list[x]['keyword'] + "</option>";
 			}
 			$('#select_keyword').html(options).selectmenu('refresh', true);
-			getKeywordTable(result.keyword_id);
+			//getKeywordTable(result.keyword_id);
 		}
 	});
 }
 	
-function getKeywordTable(keyword_id) 
+function getKeywordTable() 
 {
 	$.getJSON (domain + 'main.php?callback=?', { 
 		request			: 'frogforce',
 		requestDetails	: 'getKeywordTable',
 		user_id 		: window.localStorage["user_id"],
-		keyword_id 		: keyword_id,
 	}, function(result){
 		if (result.status == 'success') {
 			var ranking_value	= '';
@@ -445,17 +444,17 @@ function getKeywordTable(keyword_id)
 				}
 				
 				var ranking_value = "<div class='ranking-value'>"
-						          + "  <h3>" + result.data[x]['search_engine'] + "</h3>"
-								  + "  <div class='ranking-body clear'>"
-								  + "    <ul>" + current + "</ul>"
-								  + "    <ul>" + previous + "</ul>"
-								  + "  </div>"
+								  + "  <ul>" + current + "</ul>"
+								  + "  <ul>" + previous + "</ul>"
 								  + "</div>";
-								  
-				main_loop += "<div class='ranking-row clear'>" + ranking_list + ranking_value + "</div>";
+				if (result.data[x]['search_engine'] == 'Google') {
+					$('#tab_google').html(ranking_list + ranking_value);
+				} else if (result.data[x]['search_engine'] == 'Bing') {
+					$('#tab_bing').html(ranking_list + ranking_value);
+				} else if (result.data[x]['search_engine'] == 'Yahoo') {
+					$('#tab_yahoo').html(ranking_list + ranking_value);
+				}	
 			}
-
-			$('.ranking-container').html(main_loop);
 		}
 	});
 }
@@ -664,6 +663,7 @@ function getHomeDetails() {
 			$('#business_address').html(data.data.business_address);
 			$('#profile_phone').html(data.data.business_contact);
 			$('#profile_email').html(data.data.business_email);
+			$('#profile_email_2').html(data.data.business_email);
 			$('#profile_website').html(data.data.domain);
 		}
 	});
@@ -806,6 +806,8 @@ $(document).on('pageinit','#reputation-page', function(){
 
 $(document).on('pageinit','#keyword-page', function(){
 	drawKeywordChart();
+	getKeywordTable();
+	
 	$('#keywordSubmit').click(function(){
 		var form = $("#keywordForm");   
 		$("#keywordSubmit", form).attr("disabled","disabled");
@@ -814,6 +816,25 @@ $(document).on('pageinit','#keyword-page', function(){
 		$("#keywordSubmit").removeAttr("disabled");
 		return false;
 	});
+	
+	$("#keyword_content .tab_content").hide(); 											// Initially hide all content
+    $("#keyword_tabs li:first").attr("id","current"); 									// Activate first tab
+    $("#keyword_tabs").addClass("tab_google clear"); 									// Activate first tab
+    $("#keyword_content .tab_content:first-child").fadeIn(); 							// Show first tab content
+    
+    $('#keyword_tabs a').click(function(e) {
+        e.preventDefault();
+        if ($(this).closest("li").attr("id") == "current") { 							//detection for current tab
+			return       
+        } else {             
+			$("#keyword_content .tab_content").hide(); 									//Hide all content
+			$("#keyword_tabs li").attr("id",""); 										//Reset id's
+			$(this).parent().attr("id","current"); 										// Activate this
+			$(this).parent().parent().attr('class', $(this).attr('name') + ' clear'); 	// Activate first tab
+			$('#' + $(this).attr('name')).fadeIn(); 									// Show content for current tab
+        }
+    });
+	
 	window.localStorage["last_visit"] = 'keyword-stats.html';
 });
 
