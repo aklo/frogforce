@@ -695,7 +695,7 @@ span.bold {
 
 .ranking-name {
 	margin: 40px 0 0;
-	min-width: 281px;
+	min-width: 274px;
 }
 
 .ranking-value ul {
@@ -1255,6 +1255,7 @@ h3.ratingHeader {
 		-moz-border-radius: 0;
 		border-radius: 0;
 		margin: 0;
+        width: auto;
 	}
 	
 	.social-stats-container {
@@ -1307,7 +1308,7 @@ h3.ratingHeader {
 	}
 	
 	.ranking-name {
-		min-width: 137px;
+		min-width: 130px;
 	}
 	
 	#keyword_tabs li a {
@@ -1322,7 +1323,11 @@ h3.ratingHeader {
 		width: 266px;
 		margin: 12px 0;
 	}
-	
+
+	.keyword-panel .ui-select .ui-btn-inner {
+        padding-right: 20px;
+    }
+    
 	.keyword-panel .ui-btn-inner {
 		width: 228px;
 	}

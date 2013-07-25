@@ -282,7 +282,7 @@ function getLinkedinFeeds()
 			
 			$('#li-feeds').html(main_loop);
 			$('#li-connections').html(data.linkedin_total);
-			$('#li-page').attr('href', data.linkedin_page);
+            $('#li-page').attr('onclick', "window.open('" + data.linkedin_page + "', '_blank');");
 		}
 	});
 }
@@ -322,6 +322,7 @@ function getTwitterFeeds()
 			$('#tw-followers').html(data.followers_count);
 			$('#tw-following').html(data.following_count);
 			$('#tw-tweets').html(data.status_count);
+            $('#tw-page').attr('onclick', "window.open('https://twitter.com/" + data.data[0]['author'] + "', '_blank');");
 		}
 	});
 }
@@ -359,7 +360,7 @@ function getFacebookFeeds()
 			
 			$('#fb-feeds').html(main_loop);
 			$('#fb-likes').html(data.fb_likes);
-			$('#fb-page').attr('href', data.fb_page);
+			$('#fb-page').attr('onclick', "window.open('" + data.fb_page + "', '_blank');");
 		}
 	});
 }
