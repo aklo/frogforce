@@ -1616,6 +1616,7 @@ thead td {
 
 .compose_row:last-child {
 	text-align: right;
+	margin: 0;
 }
 
 .compose_row input[type='text'],
@@ -1684,11 +1685,32 @@ thead td {
 	
 	.return_link {
 		text-align: center;
+		margin: 12px;
 	}
 	
-	#messageSend {
+	.message_container {
+		margin: 12px;
+	}
+	
+	.call_column {
+		min-width: 238px;
+	}
+	
+	.lead_box {
+		margin: 12px;
+	}
+	
+	#messageSend,
+	#composeSend,
+	#messageDiscard,
+	#composeDiscard	{
 		display: block;
 		text-align: center;
+	}
+	
+	#messageDiscard,
+	#composeDiscard {
+		margin: 12px 0 0;
 	}
 	
 	[data-wysihtml5-dialog-action] {
