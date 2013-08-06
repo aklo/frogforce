@@ -1096,7 +1096,19 @@ $(document).on('pageinit','#lead-page', function(){
 		}
 		return false;
 	});
-	
+        
+    $('#messageDiscard').click(function(){
+        $('#textarea').val('');
+        return false;
+    });
+               
+    $('#composeDiscard').click(function(){
+        $('#textarea_compose').val('');
+        $('#composeTo').val('');
+        $('#composeSubject').val('');
+        return false;
+    });
+    
 	var editor = new wysihtml5.Editor("textarea", {
 		toolbar:      "toolbar",
 		stylesheets:  "css/stylesheet.css",
