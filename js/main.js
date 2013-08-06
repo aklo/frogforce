@@ -744,6 +744,190 @@ function getRealContentHeight()
     return content_height;
 }
 
+function getLeadData()
+{
+	$.getJSON (domain + 'main.php?callback=?', { 
+		request			: 'frogforce',
+		requestDetails	: 'getLeadData',
+		user_id 		: window.localStorage["user_id"],
+	}, function(data){
+		if (data.status == 'success') {
+			var tab_all 		= '';
+			var tab_calls 		= '';
+			var tab_messages	= '';
+			
+			if (data.tab_all.length > 0){
+				for (var x = 0; x < data.tab_all.length; x++) {
+					if (typeof data.tab_all[x]['messageID'] != 'undefined') {
+						var id = 'messages-' + data.tab_all[x]['messageID'];
+					} else if (typeof data.tab_all[x]['callID'] != 'undefined') {
+						var id = 'calls-' + data.tab_all[x]['callID'];
+					}
+					tab_all += '<tr id="' + id + '">'
+							 + '  <td><span>From</span>' + data.tab_all[x]['from'] + '</td>'
+							 + '  <td><span>Message</span>' + data.tab_all[x]['message'] + '</td>'
+							 + '  <td><span>Date</span>' + data.tab_all[x]['date'] + '</td>'
+							 + '</tr>'
+				}
+				
+				$('#table_tab_all').html(tab_all);
+				paginate('tab_all', $('#table_tab_all tr').length);
+			}
+			
+			if (data.tab_calls.length > 0){
+				for (var x = 0; x < data.tab_calls.length; x++) {
+					tab_calls += '<tr id="calls-' + data.tab_calls[x]['callID'] + '">'
+							  + '  <td><span>From</span>' + data.tab_calls[x]['from'] + '</td>'
+							  + '  <td><span>Message</span>' + data.tab_calls[x]['message'] + '</td>'
+							  + '  <td><span>Date</span>' + data.tab_calls[x]['date'] + '</td>'
+							  + '</tr>'
+				}
+				
+				$('#table_tab_calls').html(tab_calls);
+			}
+			
+			if (data.tab_messages.length > 0){
+				for (var x = 0; x < data.tab_messages.length; x++) {
+					tab_messages += '<tr id="messages-' + data.tab_messages[x]['messageID'] + '">'
+								 + '  <td><span>From</span>' + data.tab_messages[x]['from'] + '</td>'
+								 + '  <td><span>Message</span>' + data.tab_messages[x]['message'] + '</td>'
+								 + '  <td><span>Date</span>' + data.tab_messages[x]['date'] + '</td>'
+								 + '</tr>'
+				}
+				
+				$('#table_tab_messages').html(tab_messages);
+			}
+			
+			$('.lead_table tr').click(function() {
+				var string = $(this).attr('id').split('-');
+				var identifier = string[0];
+				var identifierID = string[1];
+				
+				$('.lead_table').hide();
+				if (identifier == 'calls') {
+					getCallDetails(identifierID);
+					$('.call_container').show();
+				} else if (identifier == 'messages') {
+					getMessageDetails(identifierID);
+					$('.message_container').show();
+				}
+				
+				$('.mc_container').show();
+			});
+		}
+	});
+	
+	return true;
+}
+
+function getCallDetails(ID)
+{
+	$.getJSON (domain + 'main.php?callback=?', { 
+		request			: 'frogforce',
+		requestDetails	: 'getCallDetails',
+		twilioID 		: ID,
+	}, function(data){
+		if (data.status == 'success') {
+			var audio = "<audio autoplay controls>"
+					  + "  <source src=" + data.data.callRecording + " type='audio/wav'>"
+					  + "  Your browser does not support the audio element."
+					  + "</audio>";
+			$('#callRecording').html(audio);
+			$('#callTo').html(data.data.callTo);	
+			$('#callFrom').html(data.data.callFrom);
+			$('#callForwardedFrom').html(data.data.callForwardedFrom); 
+			$('#callDate').html(data.data.callDate);
+			$('#callStarted').html(data.data.callStarted);
+			$('#callEnded').html(data.data.callEnded);
+		}
+	});
+}
+
+function getMessageDetails(ID)
+{
+	$.getJSON (domain + 'main.php?callback=?', { 
+		request			: 'frogforce',
+		requestDetails	: 'getMessageDetails',
+		message_id 		: ID,
+	}, function(data){
+		if (data.status == 'success') {
+			$('#messageSubject').html(data.data.messageSubject);	
+			$('#messageDate').html(data.data.messageDate);
+			$('#messageName').html(data.data.messageName); 
+			$('#messageEmail').html(data.data.messageEmail);
+			$('#messageMessage').html(data.data.messageMessage);
+		}
+	});
+}
+
+function clearCallMessages()
+{
+	$('.mc_container').hide();
+	
+	$('.message_container').hide();
+	$('#messageSubject').html('N/A');	
+	$('#messageDate').html('N/A');
+	$('#messageName').html('N/A'); 
+	$('#messageEmail').html('N/A');
+	$('#messageMessage').html('N/A');
+	
+	$('.call_container').hide();
+	$('#callRecording').html('Loading Recordings...');
+	$('#callTo').html('N/A');	
+	$('#callFrom').html('N/A');
+	$('#callForwardedFrom').html('N/A'); 
+	$('#callDate').html('N/A');
+	$('#callStarted').html('N/A');
+	$('#callEnded').html('N/A');
+}
+
+function paginate(tab_name, total) 
+{    
+	var pager = '#pager_' + tab_name;
+	var d_container = 'table_' + tab_name;
+	if ($('#' + d_container).width() < 480) {
+		var d_length = 1;
+	} else {
+		var d_length = 5;
+	}
+
+	$('.pager').hide();
+	$(pager).show()
+	.smartpaginator({ 
+		totalrecords: total,
+		recordsperpage: 10, 
+		length: d_length, 
+		datacontainer: d_container, 
+		dataelement: 'tr',
+		controlsalways: true,
+		next: '>',
+		prev: '<',
+		first: '<<',
+		last: '>>'
+	});
+}
+
+function sendMessage(to, subject, message, name, oldMessage)
+{
+	name = (typeof name === "undefined") ? "N/A" : name;
+	oldMessage = (typeof oldMessage === "undefined") ? "N/A" : oldMessage;
+	
+	$.getJSON (domain + 'main.php?callback=?', { 
+		request			: 'frogforce',
+		requestDetails	: 'sendMessage',
+		sendTo	 		: to,
+		sendSubject 	: subject,
+		sendMessage		: message,
+		sendName	 	: name,
+		sendOldMessage	: oldMessage,
+		user_id 		: window.localStorage["user_id"],
+	}, function(data){
+		if (data.status == 'success') {
+			alert('Message succesfully sent to ' + data.data.sentTo);
+		}
+	});
+}
+
 $(document).bind( "mobileinit", function() {
 	// Make your jQuery Mobile framework configuration changes here!
 	$.mobile.allowCrossDomainPages = true;
@@ -769,6 +953,7 @@ $(document).on('pageinit','#login-page', function(){
 	checkPreAuth();
 	*/
 });	
+
 /*
 $('#login-page').bind('pageinit', function(event) {
 	$('#submit').click(function(){
@@ -777,6 +962,7 @@ $('#login-page').bind('pageinit', function(event) {
 	checkPreAuth();
 });
 */
+
 $(document).on('pageinit','#home-page', function(){
 	getHomeDetails();
 	getHomeTraffic();
@@ -854,6 +1040,76 @@ $(document).on('pageinit','#traffic-page', function(){
 		return false;
 	});
 	window.localStorage["last_visit"] = 'traffic.html';
+});
+
+$(document).on('pageinit','#lead-page', function(){
+
+	getLeadData();
+	$(".lead_table").hide(); 															
+	$(".pager").hide(); 															
+    $(".lead_table:nth-child(2)").fadeIn(); 	
+	
+    $('.lead_tab').click(function(e) {
+        e.preventDefault();
+		var tab_name = $(this).attr('name');
+		var table_length = $('#table_' + tab_name + ' tr').length;
+
+        if ($(this).hasClass("active")) { 												
+			return       
+        } else {             
+			$(".lead_table").hide(); 													
+			$(".lead_tab").removeClass("active"); 										
+			$(this).addClass("active"); 										
+			$('#' + tab_name).fadeIn();
+			
+			clearCallMessages();
+			paginate(tab_name, table_length);			
+        }
+    });
+
+	$('.return_link').click(function(){
+		clearCallMessages();
+		var active_tab = $('.lead-nav').find('.lead_tab.active').attr('name');
+		$('#' + active_tab).fadeIn();
+	});
+	
+	$('#composeSend').click(function(){
+		var to = $('#composeTo').val();
+		var subject = $('#composeSubject').val();
+		var message = $('#textarea_compose').val();
+		
+		if (to != '' && message != '') {
+			sendMessage(to, subject, message);
+		}
+		return false;
+	});
+
+	$('#messageSend').click(function(){
+		var to = $('#messageEmail').html();
+		var name = $('#messageName').html();
+		var subject = $('#messageSubject').html();
+		var oldMessage = $('#messageMessage').html();
+		var message = $('#textarea').val();
+		
+		if (message != '') {
+			sendMessage(to, subject, message, name, oldMessage);
+		}
+		return false;
+	});
+	
+	var editor = new wysihtml5.Editor("textarea", {
+		toolbar:      "toolbar",
+		stylesheets:  "css/stylesheet.css",
+		parserRules:  wysihtml5ParserRules
+	});
+		
+	var editor_2 = new wysihtml5.Editor("textarea_compose", {
+		toolbar:      "toolbar_compose",
+		stylesheets:  "css/stylesheet.css",
+		parserRules:  wysihtml5ParserRules
+	});
+	
+	window.localStorage["last_visit"] = 'lead.html';
 });
 
 $(document).on('pageinit','[data-role=page]', function(){

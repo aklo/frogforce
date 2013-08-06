@@ -1,0 +1,258 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.3.1.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>FrogForce | We leapfrog you over the competition</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false&amp;language=en&amp;&amp;key=AIzaSyCSstGSXeTq4pm9gSe3bnPb90trjm22D60"></script>
+    <script type="text/javascript">
+        google.load('visualization', '1.0', {'packages':['corechart']});
+    </script>
+</head> 
+<body>
+<div data-role="page" id='lead-page'>
+
+	<div class='top-header'></div>
+	<div data-role="header" class='header'>
+		<a href="#" data-role="none" class="toggle-menu"><img src='img/menu.png' /></a>
+		<h1>Lead Management</h1>
+		<a href="#" data-role="none" class="toggle-settings"><img src='img/settings.png' /></a>
+		<div class='menu-nav hide'>
+			<ul>
+				<li><a data-role="none" data-transition="slideup" href='home.html'>Home</a></li>
+				<li><a data-role="none" data-transition="slideup" href='traffic.html'>Traffic Management</a></li>
+				<li><a data-role="none" data-transition="slideup" href='keyword-stats.html'>Keyword Statistics</a></li>
+				<li><a data-role="none" data-transition="slideup" href='reputation.html'>Reputation Page</a></li>
+				<li><a data-role="none" data-transition="slideup" href='social.html'>Social Page</a></li>
+			</ul>
+		</div>
+		<div class='settings-nav hide'>
+			<ul>
+				<li><a data-role="none" data-transition="slideup" href='#' class='logout'>Logout</a></li>
+			</ul>
+		</div>
+	</div><!-- /header -->
+
+	<div data-role="content" class='content'>	
+	
+		<p class='text'>Welcome to your <span class='bold'>Leads Management</span> Page. This is where you could track your incoming messages by your prospective clients.</p>
+
+		<div class="content-heading lead_container">
+			<ul class='lead-nav clear'>
+				<li>
+					<a data-role="none" href='#' name='tab_compose' class='lead_tab'>
+						<span>Compose</span>
+						<img src='img/icon_lead_compose.png' />
+					</a>
+				</li>
+				<li>
+					<a data-role="none" href='#' name='tab_all' class='lead_tab active'>
+						<span>All Leads</span>
+						<img src='img/icon_lead_all.png' />
+					</a>
+				</li>
+				<li>
+					<a data-role="none" href='#' name='tab_calls' class='lead_tab'>
+						<span>Phone Calls</span>
+						<img src='img/icon_lead_call.png' />
+					</a>
+				</li>
+				<li>
+					<a data-role="none" href='#' name='tab_messages' class='lead_tab'>
+						<span>Messages</span>
+						<img src='img/icon_lead_message.png' />
+					</a>
+				</li>
+			</ul>
+			<div class='content-heading-body clear'>
+				<div class='lead_table' id="tab_compose">
+					<div class='compose_content'>
+
+						<div class='compose_row'>
+							<div class='label'>To</div>
+							<input type="email" data-role="none" name='composeTo' id='composeTo' required />
+						</div>						
+						<div class='compose_row'>
+							<div class='label'>Subject</div>
+							<input type="text" data-role="none" name='composeSubject' id='composeSubject' />
+						</div>
+						<div class='compose_row'>
+							<div class='label'>Message</div>
+							<div id='toolbar_compose' class='toolbar clear' style="display: none;">
+								<ul>
+									<li data-wysihtml5-command="bold" title="CTRL+B"></li>
+									<li data-wysihtml5-command="italic" title="CTRL+I"></li>
+									<li data-wysihtml5-command="createLink"></li>
+									<li data-wysihtml5-command="insertUnorderedList"></li>
+									<li data-wysihtml5-command="insertOrderedList"></li>
+								</ul>
+								<div data-wysihtml5-dialog="createLink" style="display: none;">
+									<p>Link</p>
+									<input data-role="none" data-wysihtml5-dialog-field="href" value="http://">
+									<div>
+										<a data-wysihtml5-dialog-action="cancel" data-role="none">Cancel</a>
+										<a data-wysihtml5-dialog-action="save" data-role="none">OK</a>
+									</div>
+								</div>
+							</div>
+							<textarea id='textarea_compose' class='lead_textarea' data-role="none" required></textarea>
+						</div>
+						<div class='compose_row'>
+							<a href='#' data-role="none" id='composeSend'>Send Messsage</a>
+							<a href='#' data-role="none" id='composeDiscard'>Discard</a>
+						</div>
+
+					</div>
+				</div>
+				<div class='lead_table' id="tab_all">
+					<table>
+						<thead>
+							<tr>
+								<td>From</td>
+								<td>Message</td>
+								<td>Date</td>
+							</tr>
+						</thead>
+						<tbody id='table_tab_all'>
+							<tr>
+								<td colspan='3'>No messages / calls</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class='lead_table' id="tab_calls">
+					<table>
+						<thead>
+							<tr>
+								<td>From</td>
+								<td>Message</td>
+								<td>Date</td>
+							</tr>
+						</thead>						
+						<tbody id='table_tab_calls'>		
+							<tr>
+								<td colspan='3'>No messages / calls</td>
+							</tr>								
+						</tbody>
+					</table>
+				</div>
+				<div class='lead_table' id="tab_messages">
+					<table>
+						<thead>
+							<tr>
+								<td>From</td>
+								<td>Message</td>
+								<td>Date</td>
+							</tr>
+						</thead>						
+						<tbody id='table_tab_messages'>
+							<tr>
+								<td colspan='3'>No messages / calls</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div class='mc_container'>
+					<a href='#' class='return_link lead_box'><img src='img/arrow_orange.png' />Return to list</a>
+					<div class='call_container'>
+						<div class='lead_box clear'>
+							<div class='call_column'>
+								<div class='call_row'>
+									<span>To:</span> 
+									<p id='callTo'>N/A</p>
+								</div>
+								<div class='call_row'>
+									<span>From:</span> 							
+									<p id='callFrom'>N/A</p>
+								</div>
+								<div class='call_row'>
+									<span>Forwarded From:</span>							
+									<p id='callForwardedFrom'>N/A</p>
+								</div>
+							</div>					
+							<div class='call_column'>
+								<div class='call_row'>
+									<span>Date:</span> 
+									<p id='callDate'>N/A</p>
+								</div>
+								<div class='call_row'>
+									<span>Call Started:</span> 							
+									<p id='callStarted'>N/A</p>
+								</div>
+								<div class='call_row'>
+									<span>Call Ended:</span> 							
+									<p id='callEnded'>N/A</p>
+								</div>
+							</div>
+							
+							<div class='clear'></div>
+							
+							<div class='audio_container' id='callRecording'>Loading Recording...</div>
+						</div>
+					</div>
+					<div class='message_container'>
+						<div id='messageSubject'>N/A</div>
+						<div id='messageDate'>N/A</div>
+						<div class='message_row'>							
+							<div class='label'>Name</div>
+							<div class='value' id='messageName'>N/A</div>
+						</div>
+						<div class='message_row'>
+							<div class='label'>Email</div>
+							<div class='value' id='messageEmail'>N/A</div>
+						</div>
+						<div class='message_row'>
+							<div class='label'>Message</div>
+							<div class='value' id='messageMessage'>N/A</div>
+						</div>					
+						<div class='message_row'>
+							<div id='toolbar' class='toolbar clear' style="display: none;">
+								<ul>
+									<li data-wysihtml5-command="bold" title="CTRL+B"></li>
+									<li data-wysihtml5-command="italic" title="CTRL+I"></li>
+									<li data-wysihtml5-command="createLink"></li>
+									<li data-wysihtml5-command="insertUnorderedList"></li>
+									<li data-wysihtml5-command="insertOrderedList"></li>
+								</ul>
+								<div data-wysihtml5-dialog="createLink" style="display: none;">
+									<p>Link</p>
+									<input data-role="none" data-wysihtml5-dialog-field="href" value="http://">
+									<div>
+										<a data-wysihtml5-dialog-action="cancel" data-role="none">Cancel</a>
+										<a data-wysihtml5-dialog-action="save" data-role="none">OK</a>
+									</div>
+								</div>
+							</div>
+							<textarea id='textarea' class='lead_textarea' data-role="none"></textarea>
+						</div>
+						<div class='message_row'>
+							<a href='#' data-role="none" id='messageSend'>Send Messsage</a>
+							<a href='#' data-role="none" id='messageDiscard'>Discard</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>		
+
+		<div id="pager_tab_all" class='pager clear'></div>
+		<div id="pager_tab_calls" class='pager clear'></div>
+		<div id="pager_tab_messages" class='pager clear'></div>
+
+	</div><!-- /content -->
+</div><!-- /page -->
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile-1.3.0.min.js"></script>
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript" src="js/jquery.simplyCountable.js"></script>
+<script type="text/javascript" src="js/smartpaginator/smartpaginator.js" ></script>
+<script type="text/javascript" src="js/wysihtml/advanced.js"></script>
+<script type="text/javascript" src="js/wysihtml/wysihtml5-0.3.0.min.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
