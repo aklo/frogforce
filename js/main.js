@@ -1098,12 +1098,12 @@ $(document).on('pageinit','#lead-page', function(){
 	});
         
     $('#messageDiscard').click(function(){
-        $('#textarea').val('');
+		$('.wysihtml5-sandbox').contents().find('.wysihtml5-editor').html('');
         return false;
     });
                
     $('#composeDiscard').click(function(){
-        $('#textarea_compose').val('');
+		$('.wysihtml5-sandbox').contents().find('.wysihtml5-editor').html('');
         $('#composeTo').val('');
         $('#composeSubject').val('');
         return false;
